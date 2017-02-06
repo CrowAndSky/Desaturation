@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>deSaturation POC</title>
+  <script type="text/javascript" src="jquery.js"></script>
+<style type="text/css">
+/* ------------------ ############ RESETS ############ ------------------ */
+
+html, body, div, span, section, ul, li, h1, h2, h3, h4, h5 {
+  box-sizing: border-box;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+ul, li {
+  list-style: none;
+}
+.svg-defs {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.colors-red-blue,
+.colors-red-only,
+.colors-all {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition: opacity 2s;
+}
+
+body.grayscale .colors-red-blue,
+body.grayscale .colors-red-only,
+body.grayscale .colors-all {
+  opacity: 0;
+}
+
+.colors-red-only {
+  transition-delay: 8s
+}
+
+.colors-red-blue {
+  transition-delay: 4s
+}
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+
+<svg class="svg-defs" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" height="100%" width="100%">
+  <defs>
+    <filter id="desaturate__filter_1">
+      <feColorMatrix
+      type="matrix"
+      values="1   0   0.3333   0   0
+              0   1   0.3333   0   0
+              0   0   0.3333   0   0
+              0   0   0        1   0 "/>
+    </filter>
+
+    <filter id="desaturate__filter_2">
+      <feColorMatrix
+      type="matrix"
+      values="1   0.3333    0.3333   0   0
+              0   0.3333    0.3333   0   0
+              0   0.3333    0.3333   0   0
+              0   0         0        1   0 "/>
+    </filter>
+
+    <filter id="grayscale-image__filter">
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+
+  </defs>
+</svg>
+
+<svg class="image-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" height="665px" width="1000px">
+  <image xlink:href="paris.jpg" filter="url(#grayscale-image__filter)" x="0" y="0" width="1000px" height="665px" />
+  <image class="colors-red-only" xlink:href="paris.jpg" filter="url(#desaturate__filter_2)" x="0" y="0" width="1000px" height="665px" />
+  <image class="colors-red-blue" xlink:href="paris.jpg" filter="url(#desaturate__filter_1)" x="0" y="0" width="1000px" height="665px" />
+  <image class="colors-all" xlink:href="paris.jpg" x="0" y="0" width="1000px" height="665px" />
+</svg>
+
+<svg class="image-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="1320px" height="879px">
+  <image xlink:href="tree.jpg" filter="url(#grayscale-image__filter)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-red-only" xlink:href="tree.jpg" filter="url(#desaturate__filter_2)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-red-blue" xlink:href="tree.jpg" filter="url(#desaturate__filter_1)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-all" xlink:href="tree.jpg" x="0" y="0" width="1320px" height="879px" />
+</svg>
+
+<svg class="image-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="1320px" height="879px">
+  <image xlink:href="tree.jpg" filter="url(#grayscale-image__filter)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-red-only" xlink:href="tree.jpg" filter="url(#desaturate__filter_2)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-red-blue" xlink:href="tree.jpg" filter="url(#desaturate__filter_1)" x="0" y="0" width="1320px" height="879px" />
+  <image class="colors-all" xlink:href="tree.jpg" x="0" y="0" width="1320px" height="879px" />
+</svg>
+
+<script type="text/javascript">
+$(document).ready( function(){
+  $( 'body' ).click(function(){
+    $( 'body' ).toggleClass( 'grayscale' );
+  });
+});
+
+</script>
+</div>
+</body>
+</html>

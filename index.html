@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>deSaturation POC</title>
+  <script type="text/javascript" src="jquery.js"></script>
+<style type="text/css">
+/* ------------------ ############ RESETS ############ ------------------ */
+
+html, body, div, span, section, svg, ul, li, h1, h2, h3, h4, h5 {
+  box-sizing: border-box;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+ul, li {
+  list-style: none;
+}
+.svg-defs {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+#wrapper{
+  max-width: 1004px;
+  overflow: hidden;
+}
+.image-svg {
+  display: block;
+  float: left;
+  height: 50vw;
+  max-width: 1000px;
+  max-height: 500px;
+  width: 100vw;
+}
+.image1 {
+  margin-bottom: 4px;
+}
+
+.image2 {
+  margin-right: 4px;
+}
+
+.image2,
+.image3 {
+  max-width: 498px;
+  width: calc( 50vw - 3px);
+}
+
+.colors-red-blue,
+.colors-red-only,
+.colors-all {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition: opacity 2s;
+}
+
+body.grayscale .colors-red-blue,
+body.grayscale .colors-red-only,
+body.grayscale .colors-all {
+  opacity: 0;
+}
+
+.colors-red-only {
+  transition-delay: 8s
+}
+
+.colors-red-blue {
+  transition-delay: 4s
+}
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+
+<svg class="svg-defs" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <defs>
+    <filter id="desaturate__filter_1">
+      <feColorMatrix
+      type="matrix"
+      values="1   0   0.3333   0   0
+              0   1   0.3333   0   0
+              0   0   0.3333   0   0
+              0   0   0        1   0 "/>
+    </filter>
+
+    <filter id="desaturate__filter_2">
+      <feColorMatrix
+      type="matrix"
+      values="1   0.3333    0.3333   0   0
+              0   0.3333    0.3333   0   0
+              0   0.3333    0.3333   0   0
+              0   0         0        1   0 "/>
+    </filter>
+
+    <filter id="grayscale-image__filter">
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+
+  </defs>
+</svg>
+
+<div id="wrapper">
+<svg class="image-svg image1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <image xlink:href="img1.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-only" xlink:href="img1.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-blue" xlink:href="img1.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-all" xlink:href="img1.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+
+<svg class="image-svg image2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-only" xlink:href="img2.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-blue" xlink:href="img2.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-all" xlink:href="img2.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+
+<svg class="image-svg image3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-only" xlink:href="img3.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-red-blue" xlink:href="img3.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+  <image class="colors-all" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<script type="text/javascript">
+$(document).ready( function(){
+  $( 'body' ).click(function(){
+    $( 'body' ).toggleClass( 'grayscale' );
+  });
+});
+
+</script>
+</div>
+</body>
+</html>
