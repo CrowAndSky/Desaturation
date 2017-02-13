@@ -22,37 +22,44 @@ ul, li {
   top: 0;
   z-index: -1;
 }
-#wrapper{
-  max-width: 1004px;
-  overflow: hidden;
-}
+#wrapper,
 .image-svg {
-  display: block;
-  height: 50vw;
+  height: calc( 50% - 2px);
   max-width: 1000px;
   max-height: 500px;
   width: 100%;
 }
-.image-svg image {
-  opacity: 0;
-  transform: translate3d(0,0,0);
-  transition: opacity 1s;
-}
-.image-svg .colors-none {
-  opacity: 1;
-}
-.image1 {
-  margin-bottom: 2px;
-}
-.image2 {
-  margin-right: 4px;
+#wrapper {
+  height: 100vw;
+  max-height: 1000px;
+  overflow: hidden;
+  position: relative;
 }
 .image2,
 .image3 {
-  float: left;
   max-width: 498px;
-  width: calc( 50% - 3px);
+  width: calc( 50% - 2px);
 }
+.image-svg {
+  display: block;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: translate3d(0,0,0);
+  transition: opacity 1s;
+}
+.image-svg.image3 {
+  left: calc( 50% + 4px);
+
+}
+.image-svg.image1 {
+  top: calc( 50% + 2px );
+}
+.image-svg.colors-none {
+  opacity: 1;
+}
+
 .colors-all .colors-all,
 .series1.colors-all .colors-red-blue, .series1.colors-red-blue .colors-red-blue,
 .series1.colors-all .colors-red-only, .series1.colors-red-blue .colors-red-only, .series1.colors-red-only .colors-red-only,
@@ -110,31 +117,118 @@ ul, li {
 </svg>
 
 <div id="wrapper" class="colors-all">
-<svg class="image-svg image2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image class="colors-none" xlink:href="img2.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only2 series2" xlink:href="img2.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue2 series2" xlink:href="img2.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only" xlink:href="img2.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue" xlink:href="img2.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-all" xlink:href="img2.png" x="0" y="0" width="100%" height="100%" />
-</svg>
 
-<svg class="image-svg image3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image class="colors-none" xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only2 series2" xlink:href="img3.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue2 series2" xlink:href="img3.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only" xlink:href="img3.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue" xlink:href="img3.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-all" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+<div class="colors-none image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
 </svg>
-<svg class="image-svg image1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
-  <image class="colors-none" xlink:href="img1.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only2 series2" xlink:href="img1.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue2 series2" xlink:href="img1.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-only" xlink:href="img1.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-red-blue" xlink:href="img1.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
-  <image class="colors-all" xlink:href="img1.png" x="0" y="0" width="100%" height="100%" />
+</div>
+
+<div class="colors-red-only2 series2 image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
 </svg>
+</div>
+
+<div class="colors-red-blue2 series2 image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-red-only image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-red-blue image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image2 colors-all">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+
+<div class="image-svg image3 colors-none">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image3 colors-red-only2 series2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image3 colors-red-blue2 series2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image3 colors-red-only">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image3 colors-red-blue">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image3 colors-all">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+
+
+<div class="image-svg image1 colors-none">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image1 colors-red-only2 series2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_4)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image1 colors-red-blue2 series2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_3)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image1 colors-red-only">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_2)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image1 colors-red-blue">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_1)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="image-svg image1 colors-all">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
 </div>
 
 <script type="text/javascript">
