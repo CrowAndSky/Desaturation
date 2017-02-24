@@ -22,14 +22,14 @@ ul, li {
   top: 0;
   z-index: -1;
 }
-#wrapper,
+.wrapper,
 .image-svg {
   height: calc( 50% - 2px);
   max-width: 1000px;
   max-height: 500px;
   width: 100%;
 }
-#wrapper {
+.wrapper {
   height: 100vw;
   max-height: 1000px;
   overflow: hidden;
@@ -41,6 +41,7 @@ ul, li {
   width: calc( 50% - 2px);
 }
 .image-svg {
+  /* background-color: #bada55; */
   display: block;
   left: 0;
   opacity: 0;
@@ -51,7 +52,6 @@ ul, li {
 }
 .image-svg.image3 {
   left: calc( 50% + 4px);
-
 }
 .image-svg.image1 {
   top: calc( 50% + 2px );
@@ -65,7 +65,11 @@ ul, li {
 .series1.colors-all .colors-red-only, .series1.colors-red-blue .colors-red-only, .series1.colors-red-only .colors-red-only,
 .series2.colors-all .series2.colors-red-blue2, .series2.colors-red-blue .series2.colors-red-blue2,
 .series2.colors-all .series2.colors-red-only2, .series2.colors-red-blue .series2.colors-red-only2, .series2.colors-red-only .series2.colors-red-only2 {
-  opacity: 1;
+  opacity: 0;
+}
+
+.colors1 {
+  opacity: 1 !important;
 }
 /*
 .series2.colors-red-blue2 { opacity: 1; }
@@ -77,13 +81,22 @@ ul, li {
 
 <svg class="svg-defs" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
   <defs>
-    <filter id="desaturate__filter_1">
+    <filter id="desaturate__filter_11">
       <feColorMatrix
       type="matrix"
       values="1   0   0.3333   0   0
               0   1   0.3333   0   0
               0   0   0.3333   0   0
               0   0   0        1   0 "/>
+    </filter>
+
+    <filter id="desaturate__filter_1">
+      <feColorMatrix
+      type="matrix"
+      values="0.3333  0   0    0   0
+              0.3333  1   0    0   0
+              0.3333  0   1    0   0
+              0       0   0    1   0 "/>
     </filter>
 
     <filter id="desaturate__filter_2">
@@ -110,17 +123,53 @@ ul, li {
               0   0.3333    0.3333   0   0
               0   -3         -3      1   0 "/>
     </filter>
+    <filter id="desaturate__filter_55">
+      <feColorMatrix
+      type="matrix"
+      values="0.3333   0.3333   0.3333   0   0
+              0   1   0   0   0
+              0   0   1   0   0
+              0   0   0   1   0 "/>
+    </filter>
+    <filter id="desaturate__filter_56">
+      <feColorMatrix
+      type="matrix"
+      values="0.3333       0       0   0   0
+              0.3333       1       0   0   0
+              0.3333       0       1   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+    </filter>
+    <filter id="desaturate__filter_5">
+      <feColorMatrix
+      type="matrix"
+      values="3 0 0   -0.25   0
+              0 3 0   -0.25   0
+              0 0 3   -0.25   0
+              0 0 0   2   0 "/>
+
+<!-- 0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333 -->
+    </filter>
+
     <filter id="grayscale-image__filter">
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
+  <div class="wrapper">
+    <mask id="mask1" preserveAspectRatio="xMinYMin meet">
+      <div class="image-svg image2">
+        <image filter="url(#desaturate__filter_5)" xlink:href="img3.png" x="0" y="0" width="500px" height="500px" />
+      </div>
+    </mask>
+  </div>
 </svg>
 
-<div id="wrapper" class="colors-all">
+<div class="wrapper" class="colors-all">
 
 <div class="colors-none image-svg image2">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image xlink:href="img2.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+  <image xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
 
@@ -153,6 +202,17 @@ ul, li {
   <image xlink:href="img2.png" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
+
+<div class="image-svg image2 colors1">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image mask="url(#mask1)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+
+
+
+
 
 
 <div class="image-svg image3 colors-none">
@@ -190,6 +250,14 @@ ul, li {
   <image xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
+
+<div class="image-svg image3 colors1">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image filter="url(#desaturate__filter_5)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+
 
 
 
@@ -233,6 +301,7 @@ ul, li {
 
 <script type="text/javascript">
 $( window ).ready( function(){
+  /*
   var intervalStep = 0,
     wrapperEL = document.getElementById( "wrapper" ),
     animTimeout = window.setInterval( function() {
@@ -270,6 +339,8 @@ $( window ).ready( function(){
         intervalStep += 1;
       }
     }, 2000);
+
+    */
 });
 
 </script>
