@@ -22,14 +22,14 @@ ul, li {
   top: 0;
   z-index: -1;
 }
-.wrapper,
+#wrapper,
 .image-svg {
   height: calc( 50% - 2px);
   max-width: 1000px;
   max-height: 500px;
   width: 100%;
 }
-.wrapper {
+#wrapper {
   height: 100vw;
   max-height: 1000px;
   overflow: hidden;
@@ -41,7 +41,7 @@ ul, li {
   width: calc( 50% - 2px);
 }
 .image-svg {
-  /* background-color: #bada55; */
+  /*background-color: #bada55;*/
   display: block;
   left: 0;
   opacity: 0;
@@ -68,7 +68,7 @@ ul, li {
   opacity: 0;
 }
 
-.colors1 {
+.colors1, .colors-none {
   opacity: 1 !important;
 }
 /*
@@ -123,7 +123,8 @@ ul, li {
               0   0.3333    0.3333   0   0
               0   -3         -3      1   0 "/>
     </filter>
-    <filter id="desaturate__filter_55">
+
+    <filter id="desaturate__filter_51">
       <feColorMatrix
       type="matrix"
       values="0.3333   0.3333   0.3333   0   0
@@ -131,7 +132,16 @@ ul, li {
               0   0   1   0   0
               0   0   0   1   0 "/>
     </filter>
-    <filter id="desaturate__filter_56">
+    <filter id="desaturate__filter_53">
+      <feColorMatrix
+      type="matrix"
+      values="3 0 0   -0.25   0
+              0 3 0   -0.25   0
+              0 0 3   -0.25   0
+              0 0 0   2   0 "/>
+    </filter>
+
+    <filter id="desaturate__filter_61">
       <feColorMatrix
       type="matrix"
       values="0.3333       0       0   0   0
@@ -139,30 +149,72 @@ ul, li {
               0.3333       0       1   0   0
               0.2126  0.7152  0.0722   0 0 "/>
     </filter>
+
+    <filter id="desaturate__filter_6">
+      <feColorMatrix
+      type="matrix"
+      values="1       0       0   0   0
+              0       1       0   0   0
+              0       0       1   0   0
+              0.6378  2.1456  0.2166   -0.35 0 "/>
+    </filter>
+
     <filter id="desaturate__filter_5">
       <feColorMatrix
       type="matrix"
-      values="3 0 0   -0.25   0
-              0 3 0   -0.25   0
-              0 0 3   -0.25   0
-              0 0 0   2   0 "/>
-
-<!-- 0.3333 0.3333  0.6333
-0.3333 0.3333  0.6333
-0.3333 0.3333  0.6333 -->
+      values="1       0       0   0   0
+              0       1       0   0   0
+              0       0       1   0   0
+              0.6378  2.1456  0.2166   -0.15 0 "/>
     </filter>
+
+    <filter id="desaturate__filter_58">
+      <feColorMatrix
+      in="SourceGraphic"
+      result="luminanceToAlpha"
+      type="matrix"
+      values="0       0       0   0   0
+              0       0       0   0   0
+              0       0       0   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+
+      <feImage result="sourceTwo" xlink:href="img3.png" preserveAspectRatio="xMidYMid slice" />
+
+      <feComposite in="luminanceToAlpha" in2="sourceTwo" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
+    </filter>
+
+    <filter id="desaturate__filter_59">
+      <feColorMatrix
+      in="SourceGraphic"
+      result="luminanceToAlpha"
+      type="matrix"
+      values="0       0       0   0   0
+              0       0       0   0   0
+              0       0       0   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+
+      <feComposite in="SourceGraphic" in2="luminanceToAlpha" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
+    </filter>
+
+
 
     <filter id="grayscale-image__filter">
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
-  <div class="wrapper">
-    <mask id="mask1" preserveAspectRatio="xMinYMin meet">
-      <div class="image-svg image2">
-        <image filter="url(#desaturate__filter_5)" xlink:href="img3.png" x="0" y="0" width="500px" height="500px" />
-      </div>
-    </mask>
-  </div>
+
+<!-- 0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333
+
+<feComponentTransfer>
+<feFuncR type="table" tableValues="0.0 0.7 0.9 1.0"/>
+</feComponentTransfer>
+
+
+<feImage result="sourceTwo" xlink:href="cat.jpg" preserveAspectRatio="xMidYMid slice" />
+-->
+
 </svg>
 
 <div class="wrapper" class="colors-all">
@@ -205,7 +257,7 @@ ul, li {
 
 <div class="image-svg image2 colors1">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image mask="url(#mask1)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
+  <image filter="url(#desaturate__filter_6)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
 
