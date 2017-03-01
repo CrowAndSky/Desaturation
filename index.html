@@ -41,7 +41,6 @@ ul, li {
   width: calc( 50% - 2px);
 }
 .image-svg {
-  /*background-color: #bada55;*/
   display: block;
   left: 0;
   opacity: 0;
@@ -59,29 +58,41 @@ ul, li {
 .image-svg.colors-none {
   opacity: 1;
 }
-
 .colors-all .colors-all,
 .series1.colors-all .colors-red-blue, .series1.colors-red-blue .colors-red-blue,
 .series1.colors-all .colors-red-only, .series1.colors-red-blue .colors-red-only, .series1.colors-red-only .colors-red-only,
 .series2.colors-all .series2.colors-red-blue2, .series2.colors-red-blue .series2.colors-red-blue2,
-.series2.colors-all .series2.colors-red-only2, .series2.colors-red-blue .series2.colors-red-only2, .series2.colors-red-only .series2.colors-red-only2 {
+.series2.colors-all .series2.colors-red-only2, .series2.colors-red-blue .series2.colors-red-only2, .series2.colors-red-only .series2.colors-red-only2,
+.colors-all .colors-brights-mids, .colors-brights-mids .colors-brights-mids, .colors-brights-mids .colors-brights-only,
+.colors-brights-only .colors-brights-only,
+.notes1 .notes1,
+.notes2 .notes2,
+.notes3 .notes3 {
+  opacity: 1;
+}
+.note {
+  background-color: rgba(255,255,255,0.8);
+  display: block;
+  font-family: tahoma;
+  font-size: 24px;
+  height: 100%;
+  left: 0;
+  letter-spacing: 1px;
   opacity: 0;
+  padding: 2%;
+  position: absolute;
+  top: 0;
+  transform: translate3d(0,0,0);
+  transition: opacity 0.2s;
+  width: 100%;
 }
-
-.colors1, .colors-none {
-  opacity: 1 !important;
-}
-/*
-.series2.colors-red-blue2 { opacity: 1; }
-*/
-
 </style>
 </head>
 <body>
 
 <svg class="svg-defs" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
   <defs>
-    <filter id="desaturate__filter_11">
+    <filter id="desaturate__filter_1">
       <feColorMatrix
       type="matrix"
       values="1   0   0.3333   0   0
@@ -89,16 +100,6 @@ ul, li {
               0   0   0.3333   0   0
               0   0   0        1   0 "/>
     </filter>
-
-    <filter id="desaturate__filter_1">
-      <feColorMatrix
-      type="matrix"
-      values="0.3333  0   0    0   0
-              0.3333  1   0    0   0
-              0.3333  0   1    0   0
-              0       0   0    1   0 "/>
-    </filter>
-
     <filter id="desaturate__filter_2">
       <feColorMatrix
       type="matrix"
@@ -123,105 +124,46 @@ ul, li {
               0   0.3333    0.3333   0   0
               0   -3         -3      1   0 "/>
     </filter>
-
-    <filter id="desaturate__filter_51">
-      <feColorMatrix
-      type="matrix"
-      values="0.3333   0.3333   0.3333   0   0
-              0   1   0   0   0
-              0   0   1   0   0
-              0   0   0   1   0 "/>
-    </filter>
-    <filter id="desaturate__filter_53">
-      <feColorMatrix
-      type="matrix"
-      values="3 0 0   -0.25   0
-              0 3 0   -0.25   0
-              0 0 3   -0.25   0
-              0 0 0   2   0 "/>
-    </filter>
-
-    <filter id="desaturate__filter_61">
-      <feColorMatrix
-      type="matrix"
-      values="0.3333       0       0   0   0
-              0.3333       1       0   0   0
-              0.3333       0       1   0   0
-              0.2126  0.7152  0.0722   0 0 "/>
-    </filter>
-
-    <filter id="desaturate__filter_6">
-      <feColorMatrix
-      type="matrix"
-      values="1       0       0   0   0
-              0       1       0   0   0
-              0       0       1   0   0
-              0.6378  2.1456  0.2166   -0.35 0 "/>
-    </filter>
-
     <filter id="desaturate__filter_5">
       <feColorMatrix
       type="matrix"
       values="1       0       0   0   0
               0       1       0   0   0
               0       0       1   0   0
-              0.6378  2.1456  0.2166   -0.15 0 "/>
+              0.6378  2.1456  0.2166   -0.20 0 "/>
     </filter>
-
-    <filter id="desaturate__filter_58">
+    <filter id="desaturate__filter_6">
       <feColorMatrix
-      in="SourceGraphic"
-      result="luminanceToAlpha"
       type="matrix"
-      values="0       0       0   0   0
-              0       0       0   0   0
-              0       0       0   0   0
-              0.2126  0.7152  0.0722   0 0 "/>
-
-      <feImage result="sourceTwo" xlink:href="img3.png" preserveAspectRatio="xMidYMid slice" />
-
-      <feComposite in="luminanceToAlpha" in2="sourceTwo" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
+      values="1       0       0   0   0
+              0       1       0   0   0
+              0       0       1   0   0
+              0.6378  2.1456  0.2166   -0.55 0 "/>
     </filter>
-
-    <filter id="desaturate__filter_59">
-      <feColorMatrix
-      in="SourceGraphic"
-      result="luminanceToAlpha"
-      type="matrix"
-      values="0       0       0   0   0
-              0       0       0   0   0
-              0       0       0   0   0
-              0.2126  0.7152  0.0722   0 0 "/>
-
-      <feComposite in="SourceGraphic" in2="luminanceToAlpha" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
-    </filter>
-
-
 
     <filter id="grayscale-image__filter">
       <feColorMatrix type="saturate" values="0"/>
     </filter>
   </defs>
-
-<!-- 0.3333 0.3333  0.6333
-0.3333 0.3333  0.6333
-0.3333 0.3333  0.6333
-
-<feComponentTransfer>
-<feFuncR type="table" tableValues="0.0 0.7 0.9 1.0"/>
-</feComponentTransfer>
-
-
-<feImage result="sourceTwo" xlink:href="cat.jpg" preserveAspectRatio="xMidYMid slice" />
--->
-
 </svg>
 
-<div class="wrapper" class="colors-all">
+<div id="wrapper" class="colors-all">  <!-- colors-all -->
 
 <div class="colors-none image-svg image2">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+  <image xlink:href="img2.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-only image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_6)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-mids image-svg image2">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img2.png" filter="url(#desaturate__filter_5)" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
 
@@ -255,14 +197,6 @@ ul, li {
 </svg>
 </div>
 
-<div class="image-svg image2 colors1">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image filter="url(#desaturate__filter_6)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
-</svg>
-</div>
-
-
-
 
 
 
@@ -270,6 +204,18 @@ ul, li {
 <div class="image-svg image3 colors-none">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
   <image xlink:href="img3.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-only image-svg image3">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_6)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-mids image-svg image3">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img3.png" filter="url(#desaturate__filter_5)" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
 
@@ -303,19 +249,23 @@ ul, li {
 </svg>
 </div>
 
-<div class="image-svg image3 colors1">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
-  <image filter="url(#desaturate__filter_5)" xlink:href="img3.png" x="0" y="0" width="100%" height="100%" />
-</svg>
-</div>
-
-
-
 
 
 <div class="image-svg image1 colors-none">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
   <image xlink:href="img1.png" filter="url(#grayscale-image__filter)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-only image-svg image1">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_6)" x="0" y="0" width="100%" height="100%" />
+</svg>
+</div>
+
+<div class="colors-brights-mids image-svg image1">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMin meet" width="100%" height="100%">
+  <image xlink:href="img1.png" filter="url(#desaturate__filter_5)" x="0" y="0" width="100%" height="100%" />
 </svg>
 </div>
 
@@ -349,53 +299,150 @@ ul, li {
 </svg>
 </div>
 
-</div>
+<div class="note notes1">Transition 1: Grayscale the blue channel, then grayscale the green channel, then grayscale the red channel.</div>
+<div class="note notes2">Transition 2: Instead of grayscaling the color channels, sequentially remove each channel entirely.</div>
+<div class="note notes3">Transition 3: Remove the low luminance (dark) pixels, then remove the green channel, then remove the red channel</div>
+
+</div> <!-- close wrapper -->
 
 <script type="text/javascript">
 $( window ).ready( function(){
-  /*
   var intervalStep = 0,
     wrapperEL = document.getElementById( "wrapper" ),
     animTimeout = window.setInterval( function() {
-      console.log("intervalStep: " + intervalStep);
       switch ( intervalStep ) {
         case 0:
-          wrapperEL.className = "series1 colors-all"
+          wrapperEL.className = "series1 colors-all notes1"
           break;
         case 1:
-          wrapperEL.className = "series1 colors-red-blue"
+          wrapperEL.className = "series1 colors-all"
           break;
         case 2:
-          wrapperEL.className = "series1 colors-red-only"
+          wrapperEL.className = "series1 colors-red-blue"
           break;
         case 3:
-          wrapperEL.className = ""
+          wrapperEL.className = "series1 colors-red-only"
           break;
         case 4:
-          wrapperEL.className = "series2 colors-all"
+          wrapperEL.className = ""
           break;
         case 5:
-          wrapperEL.className = "series2 colors-red-blue"
+          wrapperEL.className = "series2 colors-all notes2"
           break;
         case 6:
-          wrapperEL.className = "series2 colors-red-only"
+          wrapperEL.className = "series2 colors-all"
           break;
         case 7:
+          wrapperEL.className = "series2 colors-red-blue"
+          break;
+        case 8:
+          wrapperEL.className = "series2 colors-red-only"
+          break;
+        case 9:
+          wrapperEL.className = ""
+          break;
+        case 10:
+          wrapperEL.className = "colors-all notes3"
+          break;
+        case 11:
+          wrapperEL.className = "colors-all"
+          break;
+        case 12:
+          wrapperEL.className = "colors-brights-mids"
+          break;
+        case 13:
+          wrapperEL.className = "colors-brights-only"
+          break;
+        case 14:
           wrapperEL.className = ""
           break;
       }
 
-      if ( intervalStep === 7 ) {
+      if ( intervalStep === 14 ) {
         intervalStep = 0;
       } else {
         intervalStep += 1;
       }
     }, 2000);
-
-    */
 });
 
 </script>
 </div>
+
+
+
+
+
+
+<!--
+
+0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333
+0.3333 0.3333  0.6333
+
+
+<filter id="desaturate__filter_51">
+      <feColorMatrix
+      type="matrix"
+      values="0.3333   0.3333   0.3333   0   0
+              0   1   0   0   0
+              0   0   1   0   0
+              0   0   0   1   0 "/>
+    </filter>
+    <filter id="desaturate__filter_53">
+      <feColorMatrix
+      type="matrix"
+      values="3 0 0   -0.25   0
+              0 3 0   -0.25   0
+              0 0 3   -0.25   0
+              0 0 0   2   0 "/>
+    </filter>
+
+    <filter id="desaturate__filter_61">
+      <feColorMatrix
+      type="matrix"
+      values="0.3333       0       0   0   0
+              0.3333       1       0   0   0
+              0.3333       0       1   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+    </filter>
+
+
+    <filter id="desaturate__filter_58">
+      <feColorMatrix
+      in="SourceGraphic"
+      result="luminanceToAlpha"
+      type="matrix"
+      values="0       0       0   0   0
+              0       0       0   0   0
+              0       0       0   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+
+      <feImage result="sourceTwo" xlink:href="img3.png" preserveAspectRatio="xMidYMid slice" />
+
+      <feComposite in="luminanceToAlpha" in2="sourceTwo" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
+    </filter>
+
+    <filter id="desaturate__filter_59">
+      <feColorMatrix
+      in="SourceGraphic"
+      result="luminanceToAlpha"
+      type="matrix"
+      values="0       0       0   0   0
+              0       0       0   0   0
+              0       0       0   0   0
+              0.2126  0.7152  0.0722   0 0 "/>
+
+      <feComposite in="SourceGraphic" in2="luminanceToAlpha" operator="arithmetic" k1="1" k2="1" k3="1" k4="-1"/>
+    </filter>
+
+
+<feComponentTransfer>
+<feFuncR type="table" tableValues="0.0 0.7 0.9 1.0"/>
+</feComponentTransfer>
+
+
+<feImage result="sourceTwo" xlink:href="cat.jpg" preserveAspectRatio="xMidYMid slice" />
+-->
 </body>
 </html>
